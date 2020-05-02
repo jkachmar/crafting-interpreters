@@ -1,0 +1,107 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: a5309cb09628cbd41b11fec8b410b66f472e09444d32f0a8960fe72b6159a282
+
+name:           hlox
+version:        0.0.0
+homepage:       https://github.com/github.com/jkachmar#readme
+bug-reports:    https://github.com/github.com/jkachmar/issues
+author:         Joe Kachmar
+maintainer:     Joe Kachmar
+copyright:      2020 Joe Kachmar
+license:        MPL-2.0
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    LICENSE
+
+source-repository head
+  type: git
+  location: https://github.com/github.com/jkachmar
+  subdir: crafting-interpreters
+
+library
+  exposed-modules:
+      Lox.Main
+      Lox.Prompt
+  other-modules:
+      Paths_hlox
+  hs-source-dirs:
+      library
+  default-extensions: NoImplicitPrelude OverloadedStrings ScopedTypeVariables
+  ghc-options: -Weverything -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missing-export-lists -Wno-missed-specialisations -Wno-all-missed-specializations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction
+  build-depends:
+      base >=4.7 && <5
+    , fused-effects >=1
+    , fused-effects-readline
+    , generic-lens >=2
+    , lens >=4.19
+    , megaparsec >=8
+    , optparse-applicative >=0.15
+    , path >=0.7
+    , path-io >=1.6
+    , pretty-simple >=3.2
+    , prettyprinter >=1.5
+    , prettyprinter-ansi-terminal >=1.1
+    , relude >=0.6
+  default-language: Haskell2010
+
+executable hlox
+  main-is: Main.hs
+  other-modules:
+      Paths_hlox
+  hs-source-dirs:
+      executables
+  default-extensions: NoImplicitPrelude OverloadedStrings ScopedTypeVariables
+  ghc-options: -Weverything -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missing-export-lists -Wno-missed-specialisations -Wno-all-missed-specializations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , fused-effects >=1
+    , fused-effects-readline
+    , generic-lens >=2
+    , hlox
+    , lens >=4.19
+    , megaparsec >=8
+    , optparse-applicative >=0.15
+    , path >=0.7
+    , path-io >=1.6
+    , pretty-simple >=3.2
+    , prettyprinter >=1.5
+    , prettyprinter-ansi-terminal >=1.1
+    , relude >=0.6
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      Paths_hlox
+  hs-source-dirs:
+      tests
+  default-extensions: NoImplicitPrelude OverloadedStrings ScopedTypeVariables
+  ghc-options: -Weverything -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missing-export-lists -Wno-missed-specialisations -Wno-all-missed-specializations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      base >=4.7 && <5
+    , fused-effects >=1
+    , fused-effects-readline
+    , generic-lens >=2
+    , hlox
+    , hspec
+    , hspec-hedgehog
+    , lens >=4.19
+    , megaparsec >=8
+    , optparse-applicative >=0.15
+    , path >=0.7
+    , path-io >=1.6
+    , pretty-simple >=3.2
+    , prettyprinter >=1.5
+    , prettyprinter-ansi-terminal >=1.1
+    , relude >=0.6
+  default-language: Haskell2010

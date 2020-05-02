@@ -1,0 +1,77 @@
+name:                hlox
+version:             0.0.0
+github:              "github.com/jkachmar/crafting-interpreters"
+license:             MPL-2.0
+author:              "Joe Kachmar"
+copyright:           "2020 Joe Kachmar"
+
+extra-source-files:
+  - README.md
+  - LICENSE
+
+# --------------------------------------------------------------------------- #
+# Global project options
+dependencies:
+  - base >= 4.7 && < 5
+  - prettyprinter >= 1.5
+  - prettyprinter-ansi-terminal >= 1.1
+  - fused-effects >= 1
+  - fused-effects-readline >= 0
+  - generic-lens >= 2
+  - lens >= 4.19
+  - megaparsec >= 8
+  - optparse-applicative >= 0.15
+  - relude >= 0.6
+  - path >= 0.7
+  - path-io >= 1.6
+  - pretty-simple >= 3.2
+
+default-extensions:
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - ScopedTypeVariables
+
+ghc-options:
+  - -Weverything
+  - -Wno-missing-exported-signatures
+  - -Wno-missing-import-lists
+  - -Wno-missing-export-lists
+  - -Wno-missed-specialisations
+  - -Wno-all-missed-specializations
+  - -Wno-unsafe
+  - -Wno-safe
+  - -Wno-missing-local-signatures
+  - -Wno-monomorphism-restriction
+
+
+# --------------------------------------------------------------------------- #
+library:
+  source-dirs: library
+
+# --------------------------------------------------------------------------- #
+executables:
+  hlox:
+    main: Main.hs
+    source-dirs: executables
+    dependencies: hlox
+
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+
+# --------------------------------------------------------------------------- #
+tests:
+  test:
+    main: Driver.hs
+    source-dirs: tests
+    build-tools: hspec-discover
+    dependencies:
+      - hlox
+      - hspec
+      - hspec-hedgehog
+
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
